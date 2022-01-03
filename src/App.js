@@ -12,9 +12,9 @@ import SignIn from "./containers/SignIn/SignIn";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/ecomm2">
         <Header />
-        <Routes basename={window.location.pathname || ""}>
+        <Routes>
           <Route path="/" exact element={<ProductListing />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/mycard" element={<MyCard />} />
