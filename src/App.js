@@ -14,12 +14,12 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Routes>
+        <Routes basename={window.location.pathname || ""}>
           <Route path="/" exact element={<ProductListing />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/mycard" element={<MyCard />} />
           <Route path="/sign" element={<SignIn />} />
-          <Route>404 Not Found!</Route>
+          {/* <Route path="/*">404 Not Found!</Route> */}
         </Routes>
       </Router>
     </div>
