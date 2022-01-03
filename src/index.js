@@ -5,11 +5,14 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 // import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter basename="https://nour99988.github.io/ecomm2/">
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

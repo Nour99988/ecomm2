@@ -19,7 +19,7 @@ function App() {
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/mycard" element={<MyCard />} />
           <Route path="/sign" element={<SignIn />} />
-          {/* <Route path="/*">404 Not Found!</Route> */}
+          <Route path="/*">404 Not Found!</Route>
         </Routes>
       </Router>
     </div>
