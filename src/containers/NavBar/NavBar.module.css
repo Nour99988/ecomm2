@@ -1,0 +1,61 @@
+.links {
+  padding: 5px;
+  color: #ddd;
+}
+
+.links > * {
+  color: #000;
+  display: inline-block;
+  padding: 5px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.icon {
+  position: relative;
+}
+.after {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: -4px;
+  right: -1px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.productsList {
+  background-color: #ddd;
+  position: absolute;
+  top: 105%;
+  right: 1px;
+  width: 275px;
+  min-height: 30px;
+  max-height: 200px;
+  font-size: 20px;
+  overflow-x: auto;
+  border: 1px solid #000;
+  border-radius: 3px;
+  visibility: hidden;
+  width: 275px;
+  padding: 3px;
+  transition: visibility 3s ease 1s;
+}
+
+.icon:hover .productsList {
+  visibility: visible;
+}
+
+.titleProductInList {
+  display: grid;
+  margin-top: 3px;
+  background-color: #fff;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  grid-gap: 4px;
+}
+
+.titleProductInList :last-child {
+  background-color: rgb(173, 223, 195);
+}
