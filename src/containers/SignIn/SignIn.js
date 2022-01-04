@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 const SignIn = () => {
   const [userValue, setuserValue] = useState({
@@ -10,16 +10,18 @@ const SignIn = () => {
   const handelsubmit = (e) => {
     e.preventDefault();
     console.log(userValue);
-    const data = fetch("https://fakestoreapi.com/auth/login", {
-      method: "POST",
-      body: JSON.stringify({
-        username: "mor_2314",
-        password: "83r5^_",
-      }),
-    })
+    axios
+      .post("http://fakestoreapi.com/auth/login", {
+        body: JSON.stringify({
+          // username: userValue.name,
+          // password: userValue.password,
+          username: "mor_2314",
+          password: "83r5^_",
+        }),
+      })
       .then((res) => res.json())
-      .then((json) => console.log(json));
-    console.log(data);
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
   };
 
   return (

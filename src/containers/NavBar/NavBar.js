@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const products = useSelector((state) => state.choseProducts);
-  // console.log(products);
   const renderList = products.map(({ title, price, qty, id }) => (
     <li className={styles.titleProductInList} key={id}>
       <span>
@@ -14,7 +13,9 @@ const NavBar = () => {
       <span>$ {price}</span>
     </li>
   ));
-
+  useEffect(() => {
+    localStorage.setItem("choseProduct", JSON.stringify(products));
+  }, [products]);
   return (
     <div className={styles.navbar}>
       <ul className={styles.links}>

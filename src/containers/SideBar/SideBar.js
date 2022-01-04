@@ -8,7 +8,7 @@ const SideBar = () => {
     return (
       <li className={styles.row}>
         <span>
-          {title} qty: {qty}
+          {title} <br /> qty: {qty}
         </span>
         <span className={styles.price}>{price} $</span>
       </li>

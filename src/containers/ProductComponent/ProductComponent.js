@@ -19,6 +19,7 @@ const ProductComponent = () => {
   //for update sync between redux and state
   useEffect(() => {
     setchoseProductsFor([...choseProductsForFromRedux]);
+    console.log("run");
   }, [choseProductsForFromRedux]);
 
   const renderList = products.map((product) => {
@@ -55,6 +56,7 @@ const ProductComponent = () => {
       dispatch(addProduct(choseProduct));
     }
   };
+
   //for fitch all products from api
   const fetchData = async () => {
     const response = await axios

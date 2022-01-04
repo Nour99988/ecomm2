@@ -4,8 +4,9 @@ const initialState = {
   products: [],
   selectedProduct: [],
 };
-
-const choseProducts = [];
+const saved = localStorage.getItem("choseProduct");
+const local = saved ? JSON.parse(saved) : [];
+const choseProducts = local.length >= 1 ? local : [];
 
 export const productReaduser = (state = initialState, { type, payload }) => {
   switch (type) {
