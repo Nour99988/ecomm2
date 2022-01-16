@@ -3,16 +3,14 @@ import {
   productReaduser,
   selectedProductReducer,
   choseProductsReducer,
-  // increseQtyReduser,
-  // removeProductReducse,
+  signReduser,
 } from "./productReducer";
 
 const redusers = combineReducers({
   allProducts: productReaduser,
   selectProduct: selectedProductReducer,
   choseProducts: choseProductsReducer,
-  // increseQty: increseQtyReduser,
-  // removeProduct: removeProductReducse,
+  logUser: signReduser,
 });
 
 export default redusers;

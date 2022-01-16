@@ -27,4 +27,5 @@
   margin-top: 15px;
   margin-bottom: 5px;
   max-height: 35vh;
+  overflow-x: scroll;
 }

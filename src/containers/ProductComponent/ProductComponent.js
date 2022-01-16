@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Rating from "react-rating";
+import Loading from "../general components/Loading/Loading";
 import styles from "./productComponent.module.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,9 +23,19 @@ const ProductComponent = () => {
     setchoseProductsFor([...choseProductsForFromRedux]);
     console.log("run");
   }, [choseProductsForFromRedux]);
-
+  const cheking = (id) => {
+    const cheak = choseProductsFor.find((pro) => pro.id == id) ? true : false;
+    return cheak;
+  };
   const renderList = products.map((product) => {
-    const { id, title, image, price, category } = product;
+    const {
+      id,
+      title,
+      image,
+      price,
+      category,
+      rating: { rate, count },
+    } = product;
     return (
       <div className={styles.firstGridInCompo} key={id}>
         <Link to={`/product/${id}`} className={styles.product}>
@@ -36,8 +48,19 @@ const ProductComponent = () => {
             <p className={styles.category}>{category}</p>
           </div>
         </Link>
+        <span>
+          <Rating
+            initialRating={rate}
+            readonly
+            style={{ color: "#ffd700" }}
+            emptySymbol="fa fa-star-o fa-1x"
+            fullSymbol="fa fa-star fa-1x"
+          />
+          {"  "}
+          {count} Reviews
+        </span>
         <button className={styles.btn} onClick={() => sendId(id)}>
-          Add To Cart
+          {cheking(id) ? "alredy in Cart" : "Add To Cart"}
         </button>
       </div>
     );
@@ -59,19 +82,21 @@ const ProductComponent = () => {
 
   //for fitch all products from api
   const fetchData = async () => {
-    const response = await axios
+    await axios
       .get("https://fakestoreapi.com/products")
-      .catch((err) => {
-        console.log("err", err);
-      });
-    dispatch(setProducts(response.data));
+      .then((res) => dispatch(setProducts(res.data)))
+      .catch((err) => console.log("err", err));
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  return <div className={styles.grid}>{renderList}</div>;
+  return (
+    <div className={styles.grid}>
+      {products.length === 0 ? <Loading /> : <>{renderList}</>}
+    </div>
+  );
 };
 
 export default ProductComponent;

@@ -1,4 +1,8 @@
-import { actionTypes, actionTypeBuy } from "../contants/action-types";
+import {
+  actionTypes,
+  actionTypeBuy,
+  actionToSign,
+} from "../contants/action-types";
 
 export const setProducts = (products) => {
   return {
@@ -47,5 +51,12 @@ export const removeProduct = (product) => {
   return {
     type: actionTypeBuy.REMOVE_PRODUCT,
     product: product,
+  };
+};
+
+export const SetUserInformationByLogIn = (userDetails) => {
+  return {
+    type: actionToSign.LGO_IN,
+    userDetails: userDetails,
   };
 };

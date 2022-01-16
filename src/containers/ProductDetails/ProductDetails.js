@@ -6,6 +6,7 @@ import {
   selectedPreoduct,
   removeSelectedProduct,
 } from "../../redux/actions/productAction";
+import Loading from "../general components/Loading/Loading";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -32,7 +33,9 @@ const ProductDetails = () => {
   return (
     <div className="ui grid container">
       {Object.keys(product).length === 0 ? (
-        <div>...Loading</div>
+        <div>
+          <Loading />
+        </div>
       ) : (
         <div className="ui placeholder segment">
           <div className="ui two column stackable center aligned grid">

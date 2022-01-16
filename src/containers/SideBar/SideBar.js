@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./sidebar.module.css";
 import { useSelector } from "react-redux";
+import BtnToBuy from "../BtnToBuy/BtnToBuy";
 
 const SideBar = () => {
   const products = useSelector((state) => state.choseProducts);
@@ -29,7 +30,9 @@ const SideBar = () => {
   return (
     <div className={products.length !== 0 ? styles.container : styles.none}>
       <ul className={styles.ul}>{title}</ul>
-      <span>totalPrice: {totalPrice()} $</span>
+      <span>
+        totalPrice: {totalPrice()} $ <BtnToBuy />
+      </span>
     </div>
   );
 };

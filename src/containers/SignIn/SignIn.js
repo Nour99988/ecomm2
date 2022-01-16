@@ -1,27 +1,38 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+// import ProductListing from "../ProductListing/ProductListing";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { SetUserInformationByLogIn } from "../../redux/actions/productAction";
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const [userValue, setuserValue] = useState({
-    name: "",
-    password: "",
+    username: "johnd",
+    password: "m38rmF$",
   });
-
-  const handelsubmit = (e) => {
+  const navegate = useNavigate();
+  const handelsubmit = async (e) => {
     e.preventDefault();
-    console.log(userValue);
     axios
-      .post("http://fakestoreapi.com/auth/login", {
-        body: JSON.stringify({
-          // username: userValue.name,
-          // password: userValue.password,
-          username: "mor_2314",
-          password: "83r5^_",
-        }),
+      .get("https://fakestoreapi.com/users/1")
+      .then((res) => {
+        dispatch(SetUserInformationByLogIn(res.data));
+        navegate("/");
       })
-      .then((res) => res.json())
-      .then((json) => console.log(json))
       .catch((err) => console.log(err));
+
+    // axios
+    //   .post("http://fakestoreapi.com/auth/login", {
+    //     body: JSON.stringify({
+    //       // username: userValue.username,
+    //       // password: userValue.password,
+    //       username: "johnd",
+    //       password: "m38rmF$",
+    //     }),
+    //   })
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => console.log(err));
   };
 
   return (
@@ -31,9 +42,9 @@ const SignIn = () => {
           User Name:
           <input
             type="text"
-            value={userValue.name}
+            value={userValue.username}
             onChange={(e) =>
-              setuserValue({ ...userValue, name: e.target.value })
+              setuserValue({ ...userValue, username: e.target.value })
             }
           />
         </label>
@@ -47,7 +58,6 @@ const SignIn = () => {
             }
           />
         </label>
-        {/* vcv vcv c c v */}
         <button type="submit"> login </button>
       </form>
     </div>
