@@ -24,7 +24,7 @@ const ProductComponent = () => {
     console.log("run");
   }, [choseProductsForFromRedux]);
   const cheking = (id) => {
-    const cheak = choseProductsFor.find((pro) => pro.id == id) ? true : false;
+    const cheak = choseProductsFor.find((pro) => pro.id === id) ? true : false;
     return cheak;
   };
   const renderList = products.map((product) => {
@@ -60,7 +60,7 @@ const ProductComponent = () => {
           {count} Reviews
         </span>
         <button className={styles.btn} onClick={() => sendId(id)}>
-          {cheking(id) ? "alredy in Cart" : "Add To Cart"}
+          {cheking(id) ? "increase quantity" : "Add To Cart"}
         </button>
       </div>
     );
