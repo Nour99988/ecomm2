@@ -4,6 +4,8 @@ import {
   selectedProductReducer,
   choseProductsReducer,
   signReduser,
+  logAdminReducer,
+  usersReducer,
 } from "./productReducer";
 
 const redusers = combineReducers({
@@ -11,6 +13,8 @@ const redusers = combineReducers({
   selectProduct: selectedProductReducer,
   choseProducts: choseProductsReducer,
   logUser: signReduser,
+  logAdmin: logAdminReducer,
+  users: usersReducer,
 });
 
 export default redusers;

@@ -14,3 +14,11 @@ export const actionTypeBuy = {
 export const actionToSign = {
   LGO_IN: "LGO_IN",
 };
+
+export const actionLogAsAdmin = {
+  LOG_AS_ADMIN: "LOG_AS_ADMIN",
+};
+
+export const actionUsers = {
+  SET_USERS: "SET_USERS",
+};

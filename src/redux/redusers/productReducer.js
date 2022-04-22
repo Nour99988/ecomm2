@@ -2,6 +2,8 @@ import {
   actionTypes,
   actionTypeBuy,
   actionToSign,
+  actionLogAsAdmin,
+  actionUsers,
 } from "../contants/action-types";
 
 const initialState = {
@@ -12,7 +14,9 @@ const saved = localStorage.getItem("choseProduct");
 const local = saved ? JSON.parse(saved) : [];
 const choseProducts = local.length >= 1 ? local : [];
 
-const user = {};
+const logInAdmin = false;
+
+const users = [];
 
 export const productReaduser = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -57,10 +61,33 @@ export const choseProductsReducer = (
   }
 };
 
-export const signReduser = (state = user, { userDetails, type }) => {
+export const signReduser = (state = users, { userDetails, type }) => {
   switch (type) {
     case actionToSign.LGO_IN:
       return userDetails;
+
+    default:
+      return state;
+  }
+};
+
+export const logAdminReducer = (
+  state = logInAdmin,
+  { type, allowToAccess }
+) => {
+  switch (type) {
+    case actionLogAsAdmin.LOG_AS_ADMIN:
+      return (state = allowToAccess);
+
+    default:
+      return state;
+  }
+};
+
+export const usersReducer = (state = users, { type, payload }) => {
+  switch (type) {
+    case actionUsers.SET_USERS:
+      return (state = payload);
 
     default:
       return state;

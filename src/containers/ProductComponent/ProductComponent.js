@@ -84,7 +84,10 @@ const ProductComponent = () => {
   const fetchData = async () => {
     await axios
       .get("https://fakestoreapi.com/products")
-      .then((res) => dispatch(setProducts(res.data)))
+      .then((res) => {
+        dispatch(setProducts(res.data));
+        console.log(res.data);
+      })
       .catch((err) => console.log("err", err));
   };
 

@@ -25,18 +25,18 @@ const NavBar = () => {
 
   const toogle = () => {
     let x = document.getElementById("productsList");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
+    if (x.style.display === "block") {
       x.style.display = "none";
+    } else {
+      x.style.display = "block";
     }
   };
 
   const toogleNav = () => {
     let x = document.getElementById("perantLinks");
-    x.style.display === "none"
-      ? (x.style.display = "flex")
-      : (x.style.display = "none");
+    x.style.display === "flex"
+      ? (x.style.display = "none")
+      : (x.style.display = "flex");
   };
   return (
     <div className={styles.navbar}>

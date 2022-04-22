@@ -2,6 +2,8 @@ import {
   actionTypes,
   actionTypeBuy,
   actionToSign,
+  actionLogAsAdmin,
+  actionUsers,
 } from "../contants/action-types";
 
 export const setProducts = (products) => {
@@ -58,5 +60,19 @@ export const SetUserInformationByLogIn = (userDetails) => {
   return {
     type: actionToSign.LGO_IN,
     userDetails: userDetails,
+  };
+};
+
+export const setActionLogAsAdmin = (allowToAccess) => {
+  return {
+    type: actionLogAsAdmin.LOG_AS_ADMIN,
+    allowToAccess: allowToAccess,
+  };
+};
+
+export const setUsers = (users) => {
+  return {
+    type: actionUsers.SET_USERS,
+    payload: users,
   };
 };
